@@ -1,0 +1,80 @@
+/* styles.css */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7f7f7; /* Optional: change the background color of the whole page */
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column; /* Stack vertically */
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  width: 100%; /* Take the full width of the page */
+}
+
+.form {
+  width: 100%;
+  max-width: 480px; /* Increase max width for a larger form */
+  padding: 40px; /* Increase padding for larger spacing */
+  margin: auto; /* Ensure margin auto for horizontal centering */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form input,
+.form button {
+  width: calc(100% - 20px); /* Account for padding */
+  padding: 15px; /* Increase padding for larger inputs */
+  margin-bottom: 20px; /* Increase margin for more space between inputs */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px; /* Larger font size for better readability */
+}
+
+.form button {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold; /* Optional: make the button text bold */
+  cursor: pointer;
+  border: none; /* Remove border for the button */
+}
+
+.form button:hover {
+  background-color: #0056b3;
+}
+
+/* Hide the nav if not needed */
+nav {
+  display: none;
+}
+
+/* styles.css */
+.signup-link {
+  text-align: left;
+  margin-top: 20px;
+}
+
+.signup-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: #ff0000; /* 红色文字 */
+  background-color: #ffc0c0; /* 浅红色背景 */
+  border: 1px solid #ff0000; /* 红色边框 */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
