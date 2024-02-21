@@ -1,0 +1,85 @@
+/* 進一步調整整體容器的最大寬度和內邊距 */
+.media-form-container {
+  max-width: 1400px; /* 可根据屏幕宽度进行调整 */
+  padding: 40px; /* 增加內邊距以增加空间 */
+  margin: 40px auto; /* 增加上下间距，并水平居中 */
+}
+
+/* 調整上傳區塊的樣式 */
+.upload-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px; /* 增加更多底部间距 */
+}
+/* 調整按鈕和輸入框的大小 */
+.file-input,
+.upload-button {
+  padding: 15px 40px; /* 增加內距 */
+  font-size: 18px; /* 增加字體大小 */
+  margin: 0 10px; /* 確保元素之间有空间 */
+}
+
+/* 調整表格樣式 */
+.uploads-table {
+  width: 100%;
+  table-layout: fixed; /* 新增，确保列宽固定 */
+  font-size: 18px; /* 增加表格內文字大小 */
+}
+
+/* 調整表格頭部樣式 */
+.uploads-table th {
+  padding: 10px 0; /* 增加表頭內距 */
+  background-color: #eee; /* 表頭背景色 */
+  text-align: left; /* 文字左對齊 */
+}
+
+/* 調整表格行樣式 */
+.uploads-table td {
+  padding: 15px; /* 增加單元格內距 */
+  word-break: break-word; /* 防止内容溢出 */
+}
+
+/* 調整連結樣式 */
+.uploads-table td a {
+  color: #0056b3; /* 修改連結顏色 */
+  text-decoration: underline; /* 若需要，添加下划线提高可识别度 */
+}
+
+h1 {
+  margin-bottom: 20px; /* 增加标题与下方内容的间距 */
+  font-size: 24px; /* 增加标题字体大小 */
+}
+
+/* 考虑到响应式设计 */
+@media (max-width: 768px) {
+  .media-form-container {
+    padding: 20px;
+    margin: 20px auto;
+  }
+
+  .file-input,
+  .upload-button {
+    padding: 10px 20px;
+    font-size: 16px;
+  }
+
+  .uploads-table {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+
+  /* 增加响应式布局，以便在小屏幕上也能保持布局整齐 /
+.upload-section {
+flex-direction: column;
+align-items: stretch; / 使上传按钮宽度充满容器 */
+}
+
+.upload-button {
+  width: 100%; /* 按钮宽度充满容器 /
+margin-top: 10px; / 为了美观，在文件输入框和按钮之间增加一些间隙 */
+}

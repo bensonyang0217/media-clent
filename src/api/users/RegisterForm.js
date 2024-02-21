@@ -1,15 +1,24 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles.css";
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const registerUrl = process.env.REACT_APP_API_URL + "/api/user/register";
 
+  const registerUrl =
+    "https://media-api-v2-f4hfj5ldpa-de.a.run.app/api/user/register";
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!name || !username || !password) {
+      setError("All fields are required!");
+      return;
+    }
+
     setError("");
     try {
       const response = await axios.post(registerUrl, {
@@ -18,11 +27,13 @@ const RegisterForm = () => {
         password,
       });
       console.log(response.data);
+      alert("Account created successfully!");
+      navigate("/login");
     } catch (error) {
       console.error(error);
       const errorMessage =
         error.response && error.response.data
-          ? error.response.data.message
+          ? error.response.data.error
           : "Register failed!";
       setError(errorMessage);
     }

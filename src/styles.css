@@ -78,3 +78,41 @@ nav {
   margin-top: 10px;
   border-radius: 5px;
 }
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+input[type="file"] {
+  margin: 20px 0;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}

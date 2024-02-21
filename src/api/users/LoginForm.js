@@ -9,7 +9,6 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const loginUrl =
     "https://media-api-v2-f4hfj5ldpa-de.a.run.app/api/user/token";
-  console.log("REACT_APP_API_URL", process.env.REACT_APP_API_URL);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");

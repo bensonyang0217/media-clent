@@ -1,0 +1,26 @@
+/* 將導航欄定位到最右上方 */
+.navbar {
+  display: flex;
+  justify-content: flex-end; /* 將內容對齊到右邊 */
+  align-items: center; /* 垂直居中 */
+  position: fixed; /* 固定位置，不隨頁面滾動而移動 */
+  top: 0; /* 距離頂部 0 */
+  right: 0; /* 距離右邊 0 */
+  width: 100%; /* 滿寬 */
+  background-color: #fff; /* 背景色 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加一些陰影效果 */
+  padding: 10px 20px; /* 上下 10px, 左右 20px 的內距 */
+}
+
+.navbar-username {
+  margin-right: 20px; /* 在用戶名和登出按鈕之間添加一些間隔 */
+}
+
+.navbar-logout {
+  background-color: #f44336; /* 紅色背景 */
+  color: #fff; /* 文字白色 */
+  border: none; /* 去除邊框 */
+  padding: 10px 20px; /* 內距 */
+  cursor: pointer; /* 鼠標懸停時顯示手形標誌 */
+  border-radius: 5px; /* 圓角邊框 */
+}
