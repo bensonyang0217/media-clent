@@ -1,10 +1,19 @@
 import React from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
+import MediaForm from "./api/media/media";
 import LoginForm from "./api/users/LoginForm";
 import RegisterForm from "./api/users/RegisterForm";
-// 引入其他需要的組件
-
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem("token");
+  return token ? children : <Navigate to="/login" />;
+};
 function App() {
+  const isAuthenticated = localStorage.getItem("token");
   return (
     <Router>
       <div>
@@ -25,7 +34,19 @@ function App() {
         <Routes>
           <Route path="/register" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
+          <Route
+            path="/media"
+            element={
+              <ProtectedRoute>
+                <MediaForm /> {/* 受保护的页面 */}
+              </ProtectedRoute>
+            }
+          />
           {/* 定義其他路由 */}
+          <Route
+            path="/"
+            element={<Navigate to={isAuthenticated ? "/media" : "/login"} />}
+          />
         </Routes>
       </div>
     </Router>

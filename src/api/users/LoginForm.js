@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles.css";
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
+  const navigate = useNavigate();
   const loginUrl = process.env.REACT_APP_API_URL + "/api/user/token";
 
   const handleSubmit = async (e) => {
@@ -24,6 +24,7 @@ const LoginForm = () => {
       }
       //   console.log(response.data.token);
       localStorage.setItem("token", response.data.token); // 儲存接收到的 token
+      navigate("/media");
       // 導航到應用的受保護區域
     } catch (error) {
       console.error(error);
