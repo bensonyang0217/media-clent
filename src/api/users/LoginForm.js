@@ -8,7 +8,7 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
   const loginUrl = process.env.REACT_APP_API_URL + "/api/user/token";
-
+  console.log("REACT_APP_API_URL", process.env.REACT_APP_API_URL);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
