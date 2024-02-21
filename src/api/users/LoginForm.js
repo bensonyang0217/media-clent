@@ -22,6 +22,7 @@ const LoginForm = () => {
       if (token === "Invalid username/password") {
         const errorMessage = "Login failed!";
         setError(errorMessage);
+        return;
       }
       //   console.log(response.data.token);
       localStorage.setItem("token", response.data.token); // 儲存接收到的 token
