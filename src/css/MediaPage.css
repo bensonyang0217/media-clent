@@ -1,67 +1,92 @@
-/* 進一步調整整體容器的最大寬度和內邊距 */
+/* General container styles */
 .media-form-container {
-  max-width: 1400px; /* 可根据屏幕宽度进行调整 */
-  padding: 40px; /* 增加內邊距以增加空间 */
-  margin: 40px auto; /* 增加上下间距，并水平居中 */
+  max-width: 1400px;
+  padding: 40px;
+  margin: 40px auto;
+  margin-top: 600px; /* Adjust this value according to the actual height of the navbar */
 }
 
-/* 調整上傳區塊的樣式 */
+/* Upload section styles */
 .upload-section {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 40px; /* 增加更多底部间距 */
+  margin-bottom: 40px;
 }
-/* 調整按鈕和輸入框的大小 */
+
+/* Input and button styles */
 .file-input,
 .upload-button {
-  padding: 15px 40px; /* 增加內距 */
-  font-size: 18px; /* 增加字體大小 */
-  margin: 0 10px; /* 確保元素之间有空间 */
+  padding: 15px 40px;
+  font-size: 18px;
+  margin: 0 10px;
 }
 
-/* 調整表格樣式 */
+/* Table styles */
 .uploads-table {
   width: 100%;
-  table-layout: fixed; /* 新增，确保列宽固定 */
-  font-size: 18px; /* 增加表格內文字大小 */
+  font-size: 18px;
+  table-layout: auto;
 }
 
-/* 調整表格頭部樣式 */
+/* Table header styles */
 .uploads-table th {
-  padding: 10px 0; /* 增加表頭內距 */
-  background-color: #eee; /* 表頭背景色 */
-  text-align: left; /* 文字左對齊 */
+  padding: 10px 0;
+  background-color: #eee;
+  text-align: left;
 }
 
-/* 調整表格行樣式 */
+/* Table data cell styles */
 .uploads-table td {
-  padding: 15px; /* 增加單元格內距 */
-  word-break: break-word; /* 防止内容溢出 */
+  padding: 15px;
+  word-break: break-word;
 }
 
-/* 調整連結樣式 */
+/* Link styles */
 .uploads-table td a {
-  color: #0056b3; /* 修改連結顏色 */
-  text-decoration: underline; /* 若需要，添加下划线提高可识别度 */
+  color: #0056b3;
+  text-decoration: underline;
 }
 
+/* Heading styles */
 h1 {
-  margin-bottom: 20px; /* 增加标题与下方内容的间距 */
-  font-size: 24px; /* 增加标题字体大小 */
+  margin-bottom: 20px;
+  font-size: 24px;
 }
 
-/* 考虑到响应式设计 */
+/* Image styles within the table */
+.uploads-table img {
+  max-width: 100px;
+  max-height: 100px;
+  object-fit: cover;
+}
+
+/* Table cell alignment */
+.uploads-table th,
+.uploads-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* Specific column styles for image cells */
+.uploads-table th:nth-child(5),
+.uploads-table td:nth-child(5) {
+  width: 120px;
+}
+
+/* Responsive design adjustments */
 @media (max-width: 768px) {
   .media-form-container {
-    padding: 20px;
-    margin: 20px auto;
+    padding: 10px;
+    margin: 10px auto;
   }
 
   .file-input,
   .upload-button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 10px; /* 调整内边距 */
+    font-size: 14px; /* 减小字体大小 */
+    margin-top: 10px; /* 添加上边距，使元素之间有空间 */
+    width: auto; /* 撤销宽度100%的样式，允许元素自然大小 */
   }
 
   .uploads-table {
@@ -73,13 +98,62 @@ h1 {
     margin-bottom: 15px;
   }
 
-  /* 增加响应式布局，以便在小屏幕上也能保持布局整齐 /
-.upload-section {
-flex-direction: column;
-align-items: stretch; / 使上传按钮宽度充满容器 */
+  .upload-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .upload-button {
+    width: 100%; /* 保持按钮宽度100%以填满容器 */
+  }
+
+  .uploads-table {
+    font-size: 14px; /* 减小表格字体大小 */
+    table-layout: fixed; /* 固定表格布局 */
+  }
+
+  .uploads-table img {
+    max-width: 80px; /* 缩小图片在小屏幕上的显示大小 */
+    max-height: 80px;
+  }
+
+  .uploads-list {
+    max-height: 200px; /* 或根据实际需要调整 */
+    overflow-y: auto; /* 启用垂直滚动 */
+  }
 }
 
-.upload-button {
-  width: 100%; /* 按钮宽度充满容器 /
-margin-top: 10px; / 为了美观，在文件输入框和按钮之间增加一些间隙 */
+.upload-message {
+  color: #084e2d; /* 红色文字 */
+  background-color: #35af1f; /* 浅红色背景 */
+  border: 1px solid #00ff40; /* 红色边框 */
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+/* Loading message styles */
+.loading-message {
+  color: #333; /* 文字颜色 */
+  background-color: #f3f3f3; /* 背景颜色 */
+  border: 1px solid #ccc; /* 边框 */
+  padding: 10px; /* 内边距 */
+  margin-top: 20px; /* 外边距 */
+  text-align: center; /* 文字居中 */
+  border-radius: 5px; /* 圆角边框 */
+  font-size: 18px; /* 字体大小 */
+  font-weight: bold; /* 字体加粗 */
+}
+
+/* 使加载提示居中显示，并在视觉上与其他内容隔开 */
+.loading-overlay {
+  position: fixed; /* 固定定位 */
+  top: 0; /* 顶部对齐 */
+  left: 0; /* 左侧对齐 */
+  right: 0; /* 右侧对齐 */
+  bottom: 0; /* 底部对齐 */
+  background: rgba(255, 255, 255, 0.7); /* 半透明背景 */
+  display: flex; /* 使用Flexbox布局 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
+  z-index: 1000; /* 确保加载提示位于其他内容之上 */
 }
