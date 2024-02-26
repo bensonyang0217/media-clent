@@ -6,12 +6,14 @@ const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const loginUrl =
     "https://media-api-v2-f4hfj5ldpa-de.a.run.app/api/user/token";
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
+    setIsLoading(true);
     try {
       const response = await axios.post(loginUrl, {
         username,
@@ -21,6 +23,7 @@ const LoginForm = () => {
       if (token === "Invalid username/password") {
         const errorMessage = "Login failed!";
         setError(errorMessage);
+        setIsLoading(false);
         return;
       }
       //   console.log(response.data.token);
@@ -34,11 +37,18 @@ const LoginForm = () => {
           ? error.response.data.message
           : "Login failed!";
       setError(errorMessage);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="form-container">
+      {isLoading && (
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"

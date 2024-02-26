@@ -116,3 +116,35 @@ td {
   padding: 10px;
   text-align: left;
 }
+
+/* 在你的styles.css文件中添加 */
+.loading-overlay {
+  position: fixed; /* 或者 'absolute'，取决于你的布局 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5); /* 半透明背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* 确保它覆盖其他内容 */
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3; /* 轻色边框 */
+  border-top: 4px solid #3498db; /* 蓝色边框 */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

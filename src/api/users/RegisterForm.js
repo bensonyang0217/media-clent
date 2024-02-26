@@ -7,6 +7,7 @@ const RegisterForm = () => {
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const registerUrl =
@@ -20,6 +21,7 @@ const RegisterForm = () => {
     }
 
     setError("");
+    setIsLoading(true);
     try {
       const response = await axios.post(registerUrl, {
         name,
@@ -36,11 +38,19 @@ const RegisterForm = () => {
           ? error.response.data.error
           : "Register failed!";
       setError(errorMessage);
+      setIsLoading(false);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
     <div className="form-container">
+      {isLoading && (
+        <div className="loading-overlay">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
       <form className="form" onSubmit={handleSubmit}>
         <input
           type="text"

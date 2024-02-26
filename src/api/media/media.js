@@ -7,7 +7,7 @@ const MediaForm = () => {
   const [file, setFile] = useState(null);
   const [uploads, setUploads] = useState([]);
   const [uploadMessage, setUploadMessage] = useState("");
-  const [isLoading, setIsLoading] = useState(false); // 添加这个状态
+  const [isLoading, setIsLoading] = useState(false);
 
   const imagesUrl = "https://media-api-v2-f4hfj5ldpa-de.a.run.app/api/images";
   useEffect(() => {
@@ -19,13 +19,16 @@ const MediaForm = () => {
           },
         });
         console.log(response.data);
-        setUploads(response.data); // 假设响应数据是一个包含所有上传信息的数组
+        setUploads(response.data);
       } catch (error) {
         console.error("Error fetching thumbnails", error);
       }
     };
 
     fetchThumbnails();
+    const intervalId = setInterval(fetchThumbnails, 10000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   const handleFileChange = (event) => {
@@ -35,7 +38,7 @@ const MediaForm = () => {
 
   const handleUpload = async () => {
     if (!file) return;
-    setIsLoading(true); // 开始上传时设置为true
+    setIsLoading(true);
     const formData = new FormData();
     formData.append("file", file);
     const uploadFileUrl =
@@ -53,7 +56,7 @@ const MediaForm = () => {
         },
       });
       setUploadMessage("upload！");
-      setFile(null); // 清除已上传的文件
+      setFile(null);
       document.querySelector(".file-input").value = "";
       //   console.log(thumbnailsResponse.data);
       setUploads(thumbnailsResponse.data);
@@ -72,7 +75,7 @@ const MediaForm = () => {
         <h1>檔案上傳</h1>
         {isLoading && (
           <div className="loading-overlay">
-            <div className="loading-message">Loading...</div>
+            <div className="loading-spinner"></div>
           </div>
         )}
         {uploadMessage && <div className="upload-message">{uploadMessage}</div>}
