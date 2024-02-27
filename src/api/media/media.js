@@ -36,6 +36,24 @@ const MediaForm = () => {
     setUploadMessage("");
   };
 
+  const handleDelete = async (id) => {
+    const isConfirmed = window.confirm("Are you sure?");
+    if (isConfirmed) {
+      try {
+        const deleteUrl = `https://media-api-v2-f4hfj5ldpa-de.a.run.app/api/images/${id}`;
+        await axios.delete(deleteUrl, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        const updatedUploads = uploads.filter((upload) => upload.id !== id);
+        setUploads(updatedUploads);
+      } catch (error) {
+        console.error("Delete error", error);
+      }
+    }
+  };
+
   const handleUpload = async () => {
     if (!file) return;
     setIsLoading(true);
@@ -106,6 +124,7 @@ const MediaForm = () => {
                 <th>Upload Time</th>
                 <th>Image</th>
                 <th>Download</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -128,6 +147,14 @@ const MediaForm = () => {
                     >
                       Download
                     </a>
+                  </td>
+                  <td>
+                    <button
+                      className="delete-button"
+                      onClick={() => handleDelete(upload.id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
